@@ -1,0 +1,1642 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Guía Clínica Pediátrica — Sinaloa</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Sans+3:wght@300;400;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #1a6b4a;
+  --verde-claro: #2d9b6f;
+  --verde-muy-claro: #e8f5ee;
+  --azul: #1b4f8a;
+  --azul-claro: #2563a8;
+  --azul-muy-claro: #e8f0fa;
+  --rojo: #b5292a;
+  --rojo-claro: #e8d5d5;
+  --naranja: #c8600a;
+  --naranja-claro: #fdf0e6;
+  --dorado: #9c7a1e;
+  --dorado-claro: #fdf6e3;
+  --gris: #3d3d3d;
+  --gris-claro: #f5f5f3;
+  --gris-medio: #9a9a9a;
+  --blanco: #fefefe;
+  --bg: #f9f8f4;
+  --sombra: 0 2px 16px rgba(0,0,0,0.10);
+  --sombra-hover: 0 6px 32px rgba(0,0,0,0.16);
+  --radio: 12px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Source Sans 3', sans-serif;
+  background: var(--bg);
+  color: var(--gris);
+  min-height: 100vh;
+}
+
+/* ───── HEADER ───── */
+header {
+  background: linear-gradient(135deg, #0f3d26 0%, #1a6b4a 55%, #1b4f8a 100%);
+  padding: 48px 40px 36px;
+  position: relative;
+  overflow: hidden;
+}
+header::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 280px; height: 280px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.05);
+}
+header::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: 30%;
+  width: 200px; height: 200px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.04);
+}
+.header-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.header-icon {
+  font-size: 56px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.header-text h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 900;
+  color: #fff;
+  letter-spacing: -0.5px;
+  line-height: 1.15;
+}
+.header-text h1 span {
+  color: #7be0ad;
+}
+.header-subtitle {
+  margin-top: 8px;
+  color: rgba(255,255,255,0.72);
+  font-size: 1rem;
+  font-weight: 300;
+  letter-spacing: 0.3px;
+}
+.header-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+.badge {
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.22);
+  color: rgba(255,255,255,0.88);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  padding: 4px 12px;
+  border-radius: 20px;
+  backdrop-filter: blur(4px);
+}
+
+/* ───── NAV ───── */
+nav {
+  background: #fff;
+  border-bottom: 2px solid #e8e8e4;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+}
+.nav-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  overflow-x: auto;
+  gap: 0;
+  scrollbar-width: none;
+}
+.nav-inner::-webkit-scrollbar { display: none; }
+.nav-btn {
+  flex-shrink: 0;
+  padding: 16px 20px;
+  border: none;
+  background: none;
+  font-family: 'Source Sans 3', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--gris-medio);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.2px;
+}
+.nav-btn:hover { color: var(--verde); }
+.nav-btn.active {
+  color: var(--verde);
+  border-bottom-color: var(--verde);
+}
+
+/* ───── MAIN LAYOUT ───── */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 32px 24px 80px;
+}
+
+.section { display: none; }
+.section.active { display: block; }
+
+/* ───── ENFERMEDAD CARD ───── */
+.enfermedad-header {
+  background: linear-gradient(135deg, var(--verde) 0%, var(--azul) 100%);
+  border-radius: var(--radio) var(--radio) 0 0;
+  padding: 28px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 0;
+}
+.enfermedad-header .emoji { font-size: 2.2rem; }
+.enfermedad-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #fff;
+}
+.enfermedad-header p {
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
+  margin-top: 2px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  background: #fff;
+  border: 1px solid #e0e0d8;
+  border-top: none;
+  border-radius: 0 0 var(--radio) var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+
+.card-cell {
+  padding: 24px 28px;
+  border-right: 1px solid #e8e8e4;
+  border-bottom: 1px solid #e8e8e4;
+}
+.card-cell:nth-child(2n) { border-right: none; }
+.card-cell.full { grid-column: 1 / -1; border-right: none; }
+.card-cell:last-child, .card-cell:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+
+.cell-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--verde-muy-claro);
+}
+.cell-title .dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--verde);
+  flex-shrink: 0;
+}
+.cell-title.azul { color: var(--azul); border-bottom-color: var(--azul-muy-claro); }
+.cell-title.azul .dot { background: var(--azul); }
+.cell-title.rojo { color: var(--rojo); border-bottom-color: var(--rojo-claro); }
+.cell-title.rojo .dot { background: var(--rojo); }
+.cell-title.naranja { color: var(--naranja); border-bottom-color: var(--naranja-claro); }
+.cell-title.naranja .dot { background: var(--naranja); }
+.cell-title.dorado { color: var(--dorado); border-bottom-color: var(--dorado-claro); }
+.cell-title.dorado .dot { background: var(--dorado); }
+
+.card-cell p, .card-cell li {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #444;
+}
+.card-cell ul { padding-left: 16px; }
+.card-cell li { margin-bottom: 4px; }
+
+/* ───── ALGORITMO ───── */
+.algo-box {
+  background: #fff;
+  border: 1px solid #e0e0d8;
+  border-radius: var(--radio);
+  padding: 28px;
+  margin-top: 16px;
+  box-shadow: var(--sombra);
+}
+.algo-box h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  color: var(--verde);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.flowchart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  font-family: 'Source Sans 3', sans-serif;
+}
+.flow-node {
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-align: center;
+  max-width: 420px;
+  width: 100%;
+  position: relative;
+}
+.flow-node.inicio { background: var(--verde); color: #fff; border-radius: 30px; }
+.flow-node.decision { background: var(--azul-muy-claro); border: 2px solid var(--azul); color: var(--azul); border-radius: 4px; transform: none; }
+.flow-node.accion { background: var(--verde-muy-claro); border: 2px solid var(--verde); color: var(--verde); }
+.flow-node.alerta { background: var(--rojo-claro); border: 2px solid var(--rojo); color: var(--rojo); }
+.flow-node.naranja { background: var(--naranja-claro); border: 2px solid var(--naranja); color: var(--naranja); }
+.flow-node.fin { background: var(--gris); color: #fff; border-radius: 30px; }
+
+.flow-arrow {
+  width: 2px;
+  height: 20px;
+  background: var(--gris-medio);
+  position: relative;
+}
+.flow-arrow::after {
+  content: '▼';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--gris-medio);
+  font-size: 10px;
+}
+.flow-label {
+  font-size: 0.72rem;
+  color: var(--gris-medio);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  margin: 2px 0;
+}
+.flow-split {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: center;
+  align-items: flex-start;
+}
+.flow-branch {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+  flex: 1;
+  max-width: 200px;
+}
+
+/* ───── ESCALAS ───── */
+.escala-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.82rem;
+  margin-top: 8px;
+}
+.escala-table th {
+  background: var(--verde);
+  color: #fff;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+.escala-table th:first-child { border-radius: 6px 0 0 0; }
+.escala-table th:last-child { border-radius: 0 6px 0 0; }
+.escala-table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #eee;
+  vertical-align: top;
+}
+.escala-table tr:nth-child(even) td { background: var(--verde-muy-claro); }
+.escala-table tr:last-child td { border-bottom: none; }
+
+.severity-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 20px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+.sev-leve { background: #d4edda; color: #155724; }
+.sev-mod { background: #fff3cd; color: #856404; }
+.sev-sev { background: #f8d7da; color: #721c24; }
+
+/* ───── ANAMNESIS ───── */
+.anamnesis-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 8px;
+}
+.anamnesis-item {
+  background: var(--azul-muy-claro);
+  border-left: 3px solid var(--azul);
+  padding: 8px 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 0.82rem;
+  color: var(--azul);
+  font-weight: 500;
+}
+
+/* ───── ANEMIA SECTION ───── */
+.anemia-flow {
+  background: #fff;
+  border-radius: var(--radio);
+  border: 1px solid #e0e0d8;
+  padding: 32px;
+  box-shadow: var(--sombra);
+}
+
+.anemia-step {
+  border-left: 4px solid var(--verde);
+  padding: 16px 20px;
+  margin-bottom: 12px;
+  background: var(--verde-muy-claro);
+  border-radius: 0 8px 8px 0;
+}
+.anemia-step h4 {
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--verde);
+  margin-bottom: 6px;
+}
+.anemia-step p { font-size: 0.84rem; color: #444; line-height: 1.5; }
+
+.anemia-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+.anemia-card {
+  border-radius: var(--radio);
+  padding: 20px;
+  border: 1px solid;
+}
+.anemia-card h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+.anemia-card ul {
+  font-size: 0.8rem;
+  padding-left: 16px;
+  line-height: 1.7;
+}
+.ac-ferropenica { border-color: #c0392b; background: #fdf5f5; }
+.ac-ferropenica h4 { color: #c0392b; }
+.ac-hemolitica { border-color: #8e44ad; background: #faf5ff; }
+.ac-hemolitica h4 { color: #8e44ad; }
+.ac-vb12 { border-color: #2980b9; background: #f0f8ff; }
+.ac-vb12 h4 { color: #2980b9; }
+.ac-aplasica { border-color: #d35400; background: #fdf6f0; }
+.ac-aplasica h4 { color: #d35400; }
+.ac-cronica { border-color: #27ae60; background: #f0fff4; }
+.ac-cronica h4 { color: #27ae60; }
+.ac-drepa { border-color: #16a085; background: #f0fdfb; }
+.ac-drepa h4 { color: #16a085; }
+
+/* ───── SEPARADORES ───── */
+.seccion-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--verde);
+  margin: 40px 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.seccion-titulo::after {
+  content: '';
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(to right, var(--verde-muy-claro), transparent);
+}
+
+/* ───── TRATAMIENTO PILLS ───── */
+.tx-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+.tx-pill {
+  background: var(--dorado-claro);
+  border: 1px solid #d4a817;
+  color: #7a5c00;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 4px 12px;
+  border-radius: 20px;
+}
+.tx-pill.alerta {
+  background: var(--rojo-claro);
+  border-color: var(--rojo);
+  color: var(--rojo);
+}
+.tx-pill.verde {
+  background: var(--verde-muy-claro);
+  border-color: var(--verde);
+  color: var(--verde);
+}
+
+/* ───── RESPONSIVE ───── */
+@media (max-width: 700px) {
+  .card-grid { grid-template-columns: 1fr; }
+  .card-cell { border-right: none; }
+  .card-cell.full { grid-column: 1; }
+  .anemia-grid { grid-template-columns: 1fr; }
+  .anamnesis-list { grid-template-columns: 1fr; }
+  .header-text h1 { font-size: 1.6rem; }
+  main { padding: 20px 12px 60px; }
+}
+
+/* ───── PRINT ───── */
+@media print {
+  nav { display: none; }
+  .section { display: block !important; }
+  main { padding: 0; max-width: 100%; }
+}
+
+.disclaimer {
+  background: var(--dorado-claro);
+  border: 1px solid #d4a817;
+  border-radius: var(--radio);
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  font-size: 0.82rem;
+  color: #5a4200;
+  line-height: 1.5;
+}
+.disclaimer strong { color: var(--dorado); }
+
+.nota {
+  background: var(--azul-muy-claro);
+  border-left: 4px solid var(--azul);
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  color: var(--azul);
+  margin-top: 12px;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="header-icon">🩺</div>
+    <div class="header-text">
+      <h1>Guía Clínica <span>Pediátrica</span></h1>
+      <p class="header-subtitle">Patologías frecuentes en Sinaloa · México · Basada en Gómez-Gómez, Pediatría (ed. actualizada) · Uso clínico</p>
+      <div class="header-badges">
+        <span class="badge">IRA</span>
+        <span class="badge">EDA</span>
+        <span class="badge">Dengue</span>
+        <span class="badge">Piel</span>
+        <span class="badge">Parasitosis</span>
+        <span class="badge">Anemias</span>
+        <span class="badge">Sinaloa 2024</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav>
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showSection('ira')">🫁 IRA</button>
+    <button class="nav-btn" onclick="showSection('eda')">💧 Diarrea / EDA</button>
+    <button class="nav-btn" onclick="showSection('dengue')">🦟 Dengue</button>
+    <button class="nav-btn" onclick="showSection('piel')">🩹 Infec. Piel</button>
+    <button class="nav-btn" onclick="showSection('parasitosis')">🔬 Parasitosis</button>
+    <button class="nav-btn" onclick="showSection('anemias')">🩸 Anemias</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 1: IRA
+═══════════════════════════════════════════════════════ -->
+<div id="ira" class="section active">
+  <div class="disclaimer">
+    <strong>⚠️ Uso Clínico:</strong> Esta guía es una herramienta de apoyo para el profesional de salud. Las decisiones terapéuticas deben individualizarse. Basada en Gómez-Gómez: Introducción a la Pediatría, 9.ª ed. y lineamientos IMSS/SS México.
+  </div>
+
+  <div class="enfermedad-header">
+    <div class="emoji">🫁</div>
+    <div>
+      <h2>Infecciones Respiratorias Agudas (IRA)</h2>
+      <p>Primera causa de consulta pediátrica en México y Sinaloa · Alta carga de enfermedad en &lt;5 años</p>
+    </div>
+  </div>
+
+  <div class="card-grid">
+    <!-- FISIOPATOLOGÍA -->
+    <div class="card-cell">
+      <div class="cell-title"><span class="dot"></span>Fisiopatología</div>
+      <p>Los virus y bacterias ingresan por vía aérea y colonizan el epitelio respiratorio. La respuesta inflamatoria local genera edema, hipersecreción y obstrucción. En menores de 2 años, la vía aérea estrecha amplifica la obstrucción. El VRS provoca necrosis del epitelio bronquiolar con tapones mucosos (bronquiolitis). Las IRA bajas pueden causar hipoxemia por V/Q mismatch.</p>
+      <ul style="margin-top:10px">
+        <li><strong>Rinitis/Faringitis:</strong> Edema mucoso, hipersecreción, respuesta TH2</li>
+        <li><strong>Laringitis/Croup:</strong> Edema subglótico → estridor inspiratorio</li>
+        <li><strong>Bronquiolitis:</strong> Edema, moco, broncoespasmo → atrapamiento aéreo</li>
+        <li><strong>Neumonía:</strong> Consolidación alveolar → cortocircuito pulmonar</li>
+      </ul>
+    </div>
+
+    <!-- DIAGNÓSTICO -->
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Diagnóstico</div>
+      <p>Principalmente <strong>clínico</strong>. Laboratorio y gabinete sólo si se sospecha complicación.</p>
+      <ul style="margin-top:8px">
+        <li><strong>Rinofaringitis:</strong> Rinorrea, fiebre leve, tos, congestión nasal sin signos de alarma</li>
+        <li><strong>Amigdalitis:</strong> Eritema faríngeo, exudado, fiebre alta, odinofagia, ausencia de tos → Criterios Centor/McIsaac</li>
+        <li><strong>Bronquiolitis:</strong> &lt;2 años, sibilancias, taquipnea, uso de músculos accesorios, sibilancias difusas, primer episodio</li>
+        <li><strong>Neumonía:</strong> Fiebre, tos, taquipnea (criterio OMS), quejido, cianosis, matidez, estertores</li>
+        <li><strong>Rx tórax:</strong> Sólo en neumonía complicada, dudas diagnósticas o mala evolución</li>
+      </ul>
+    </div>
+
+    <!-- DIAGNÓSTICO DIFERENCIAL -->
+    <div class="card-cell">
+      <div class="cell-title rojo"><span class="dot"></span>Diagnóstico Diferencial</div>
+      <ul>
+        <li>Asma (sibilancias recurrentes, antecedente atópico)</li>
+        <li>Cuerpo extraño en vía aérea (inicio brusco, asimétrico)</li>
+        <li>Laringomalacia (estridor desde nacimiento)</li>
+        <li>Tos ferina (paroxismos + "gallito" inspiratorio, lactante)</li>
+        <li>Influenza (inicio brusco, mialgias, fiebre alta)</li>
+        <li>COVID-19 (pérdida olfato, disnea progresiva)</li>
+        <li>Insuficiencia cardiaca (hepatomegalia, galope, cardiomegalia)</li>
+        <li>Fibrosis quística (esteatorrea, falla de medro, cultivos)</li>
+      </ul>
+    </div>
+
+    <!-- ESCALAS -->
+    <div class="card-cell">
+      <div class="cell-title naranja"><span class="dot"></span>Escalas y Criterios</div>
+      <p style="font-weight:700; font-size:0.82rem; margin-bottom:8px">Criterios de Taquipnea OMS (Neumonía):</p>
+      <table class="escala-table">
+        <tr><th>Edad</th><th>FR (resp/min)</th></tr>
+        <tr><td>&lt;2 meses</td><td>≥60</td></tr>
+        <tr><td>2–11 meses</td><td>≥50</td></tr>
+        <tr><td>1–5 años</td><td>≥40</td></tr>
+        <tr><td>≥5 años</td><td>≥30</td></tr>
+      </table>
+      <p style="font-weight:700; font-size:0.82rem; margin:10px 0 6px">Escala de Westley (Croup):</p>
+      <table class="escala-table">
+        <tr><th>Variable</th><th>Puntos</th></tr>
+        <tr><td>Estridor 0/reposo 2</td><td>0–2</td></tr>
+        <tr><td>Retracciones</td><td>0–3</td></tr>
+        <tr><td>Entrada de aire</td><td>0–2</td></tr>
+        <tr><td>Cianosis</td><td>0–5</td></tr>
+        <tr><td>Nivel de conciencia</td><td>0–5</td></tr>
+      </table>
+      <p style="font-size:0.75rem;margin-top:4px;color:#666">Leve ≤2 | Moderado 3–7 | Severo ≥8</p>
+      <p style="font-weight:700; font-size:0.82rem; margin:10px 0 4px">McIsaac (Amigdalitis estreptocócica):</p>
+      <p style="font-size:0.8rem">+1 fiebre &gt;38°C, +1 sin tos, +1 adenopatía cervical, +1 exudado amigdalar, −1 si ≥15 años. Score ≥3 → tratar o hisopo.</p>
+    </div>
+
+    <!-- TRATAMIENTO -->
+    <div class="card-cell">
+      <div class="cell-title dorado"><span class="dot"></span>Tratamiento</div>
+      <ul>
+        <li><strong>Rinofaringitis viral:</strong> Sintomático. Paracetamol/ibuprofeno, hidratación, NO antibióticos</li>
+        <li><strong>Amigdalitis estreptocócica:</strong> Amoxicilina 50 mg/kg/día c/8h × 10 días (primera línea). Alergia: azitromicina 10 mg/kg/día × 5 días</li>
+        <li><strong>Croup leve:</strong> Dexametasona VO 0.15–0.6 mg/kg DU + humedad fría</li>
+        <li><strong>Croup moderado-severo:</strong> Dexametasona IM/IV + adrenalina nebulizada 0.5 mL/kg de L-epinefrina al 1:1000 (máx 5 mL)</li>
+        <li><strong>Bronquiolitis:</strong> Soporte: O₂ si SpO₂ &lt;92%, hidratación, posición; salbutamol sólo si responde (prueba terapéutica)</li>
+        <li><strong>Neumonía no grave:</strong> Amoxicilina 80–90 mg/kg/día c/8h × 7–10 días</li>
+        <li><strong>Neumonía grave/hospitalización:</strong> Ampicilina IV + gentamicina o cefotaxima</li>
+      </ul>
+      <div class="nota">🚨 Signos de alarma para referir: cianosis, SpO₂ &lt;90%, quejido, apnea, rechazo total a la vía oral, deterioro rápido.</div>
+    </div>
+
+    <!-- ANAMNESIS -->
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Anamnesis / Orientación de Consulta</div>
+      <div class="anamnesis-list">
+        <div class="anamnesis-item">¿Inicio y duración de fiebre?</div>
+        <div class="anamnesis-item">¿Tipo de tos? ¿Nocturna?</div>
+        <div class="anamnesis-item">¿Dificultad para respirar o ruidos?</div>
+        <div class="anamnesis-item">¿Acepta líquidos/alimentos?</div>
+        <div class="anamnesis-item">¿Color de secreciones nasales?</div>
+        <div class="anamnesis-item">¿Contacto con enfermos?</div>
+        <div class="anamnesis-item">¿Episodios previos similares?</div>
+        <div class="anamnesis-item">¿Vacunas al corriente? (neumococo, Hib)</div>
+        <div class="anamnesis-item">¿Uso previo de antibióticos?</div>
+        <div class="anamnesis-item">¿Antecedentes de asma/atopia?</div>
+      </div>
+    </div>
+
+    <!-- ALGORITMO -->
+    <div class="card-cell full">
+      <div class="cell-title"><span class="dot"></span>Algoritmo Diagnóstico y Terapéutico — IRA</div>
+      <div class="flowchart">
+        <div class="flow-node inicio">Niño con síntomas respiratorios</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node decision">¿Signos de alarma? (cianosis, quejido, apnea, SpO₂ &lt;90%, rechazo de vía oral)</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-split">
+          <div class="flow-branch">
+            <div class="flow-label">SÍ</div>
+            <div class="flow-node alerta">⚠️ URGENCIA — Estabilizar: O₂, vía IV, referir a hospital</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">NO → Evaluar localización</div>
+            <div class="flow-node decision">¿Dónde se localiza?</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-split" style="gap:12px">
+              <div class="flow-branch" style="max-width:130px">
+                <div class="flow-label" style="font-size:0.66rem">Vía aérea alta</div>
+                <div class="flow-node accion" style="font-size:0.76rem">Rinitis / Faringitis / Amigdalitis → McIsaac ≥3: amoxicilina</div>
+              </div>
+              <div class="flow-branch" style="max-width:130px">
+                <div class="flow-label" style="font-size:0.66rem">Laringe</div>
+                <div class="flow-node accion" style="font-size:0.76rem">Croup → Westley → Dexametasona ± Adrenalina neb.</div>
+              </div>
+              <div class="flow-branch" style="max-width:130px">
+                <div class="flow-label" style="font-size:0.66rem">Bronquiolos</div>
+                <div class="flow-node accion" style="font-size:0.76rem">Bronquiolitis &lt;2a → O₂, hidratación, prueba salbutamol</div>
+              </div>
+              <div class="flow-branch" style="max-width:130px">
+                <div class="flow-label" style="font-size:0.66rem">Parénquima</div>
+                <div class="flow-node accion" style="font-size:0.76rem">Neumonía → FR para edad → Amoxicilina 80–90mg/kg/día</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node fin">Seguimiento a 48–72 h · Revalorar si empeora</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 2: EDA / DIARREA
+═══════════════════════════════════════════════════════ -->
+<div id="eda" class="section">
+  <div class="enfermedad-header">
+    <div class="emoji">💧</div>
+    <div>
+      <h2>Enfermedad Diarreica Aguda (EDA)</h2>
+      <p>Segunda causa de mortalidad infantil en México · Endémica en Sinaloa por condiciones climáticas y saneamiento</p>
+    </div>
+  </div>
+  <div class="card-grid">
+    <div class="card-cell">
+      <div class="cell-title"><span class="dot"></span>Fisiopatología</div>
+      <p>Tres mecanismos principales:</p>
+      <ul style="margin-top:8px">
+        <li><strong>Secretora:</strong> Toxinas (ECET, cólera) activan adenilciclasa → ↑AMPc → secreción activa de Cl⁻ y agua sin daño epitelial. Heces profusas, acuosas, sin moco/sangre</li>
+        <li><strong>Osmótica:</strong> Virus (Rotavirus) destruyen enterocitos maduros → deficiencia disacaridasas → solutos no absorbidos retienen agua. Cesa al ayuno</li>
+        <li><strong>Invasiva/Inflamatoria:</strong> Shigella, Salmonella, E. coli enterohemorrágica invaden mucosa → reacción inflamatoria → disentería (sangre, moco, tenesmo)</li>
+      </ul>
+      <p style="margin-top:8px">La deshidratación resulta de pérdidas de agua y electrolitos que superan la ingesta. La acidosis metabólica se produce por pérdida de bicarbonato en heces.</p>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Diagnóstico y Clasificación</div>
+      <p style="font-weight:700;font-size:0.82rem;margin-bottom:8px">Grado de deshidratación (OMS/IMSS):</p>
+      <table class="escala-table">
+        <tr><th>Signo</th><th>Sin deshidratación</th><th>Alguna</th><th>Grave</th></tr>
+        <tr><td>Estado general</td><td>Bien</td><td>Irritable</td><td>Letárgico/inconsciente</td></tr>
+        <tr><td>Ojos</td><td>Normales</td><td>Hundidos</td><td>Muy hundidos</td></tr>
+        <tr><td>Lágrimas</td><td>Sí</td><td>Disminuidas</td><td>Ausentes</td></tr>
+        <tr><td>Boca/lengua</td><td>Húmeda</td><td>Seca</td><td>Muy seca</td></tr>
+        <tr><td>Pliegue cutáneo</td><td>Vuelve rápido</td><td>Lento (1–2 s)</td><td>Muy lento (&gt;2 s)</td></tr>
+        <tr><td>Pulso</td><td>Normal</td><td>Rápido</td><td>Filiforme/ausente</td></tr>
+      </table>
+      <div class="nota">🧪 EGO: solo si sospecha ITU. Coprocultivo: disentería, viajero, inmunocomprometido, brote</div>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title rojo"><span class="dot"></span>Diagnóstico Diferencial</div>
+      <ul>
+        <li>Invaginación intestinal (dolor cólico intenso, heces en "jalea de grosella", masa palpable)</li>
+        <li>Apendicitis (dolor en FID, rebote, fiebre, leucocitosis)</li>
+        <li>Intolerancia a la lactosa (relación directa con ingesta láctea)</li>
+        <li>Enfermedad inflamatoria intestinal (crónica, sangre recurrente, falla de medro)</li>
+        <li>Síndrome hemolítico-urémico (ECEH O157: oliguria, anemia, trombocitopenia)</li>
+        <li>Hiperplasia suprarrenal (lactante, vómito, alteración electrolítica)</li>
+        <li>Intoxicación alimentaria (brote familiar, inicio en horas)</li>
+        <li>Pseudomembranosa (uso previo antibióticos, C. difficile)</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title naranja"><span class="dot"></span>Escalas / Criterios</div>
+      <p style="font-weight:700;font-size:0.82rem;margin-bottom:6px">Plan de Rehidratación OMS (IMSS):</p>
+      <table class="escala-table">
+        <tr><th>Plan</th><th>Indicación</th><th>Volumen</th></tr>
+        <tr><td><strong>A</strong></td><td>Sin deshidratación</td><td>SRO 10 mL/kg/deposición + líquidos libres en casa</td></tr>
+        <tr><td><strong>B</strong></td><td>Deshidratación "alguna"</td><td>SRO 75–100 mL/kg en 4h en unidad de salud</td></tr>
+        <tr><td><strong>C</strong></td><td>Deshidratación grave</td><td>Hartmann o SS 0.9% 20 mL/kg bolo IV, repetir hasta estabilizar, luego Plan B</td></tr>
+      </table>
+      <p style="font-weight:700;font-size:0.82rem;margin:10px 0 6px">Escala de Vesikari (Gastroenteritis por Rotavirus — gravedad):</p>
+      <p style="font-size:0.79rem">Evalúa: frecuencia/duración de diarrea y vómito, temperatura, deshidratación, necesidad de hospitalización. Score &gt;11 = grave.</p>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title dorado"><span class="dot"></span>Tratamiento</div>
+      <ul>
+        <li><strong>Pilar central: SRO</strong> (Sales de Rehidratación Oral) — NUNCA suspender alimentación</li>
+        <li><strong>Zinc:</strong> 10 mg/día (&lt;6m) o 20 mg/día (≥6m) × 10–14 días — reduce duración y recurrencias</li>
+        <li><strong>Antibióticos:</strong> SOLO en disentería (Shigella: TMP/SMX o azitromicina), cólera (doxiciclina ≥8a), Giardia (metronidazol)</li>
+        <li><strong>Racecadotrilo:</strong> Encefalinasa; puede usarse como antisecretor coadyuvante</li>
+        <li><strong>NO usar:</strong> loperamida en &lt;12 años, antibióticos rutinarios, antieméticos rutinarios en diarrea aguda</li>
+        <li><strong>Probióticos:</strong> Lactobacillus GG o Saccharomyces boulardii — evidencia moderada para reducir duración</li>
+        <li><strong>Alimentación:</strong> Reiniciar inmediatamente tras rehidratación. NO dieta astringente</li>
+      </ul>
+      <div class="nota">🚨 Hospitalizar: deshidratación grave, vómito incoercible, íleo, SHU, distensión abdominal, sangrado abundante</div>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Anamnesis / Orientación de Consulta</div>
+      <div class="anamnesis-list">
+        <div class="anamnesis-item">Número de deposiciones / 24h</div>
+        <div class="anamnesis-item">¿Sangre o moco en heces?</div>
+        <div class="anamnesis-item">¿Vómito? ¿Cuántas veces?</div>
+        <div class="anamnesis-item">¿Acepta líquidos por boca?</div>
+        <div class="anamnesis-item">¿Última micción? (diuresis)</div>
+        <div class="anamnesis-item">¿Fuente de agua? ¿Comida fuera?</div>
+        <div class="anamnesis-item">¿Otros casos en familia?</div>
+        <div class="anamnesis-item">¿Peso habitual del niño?</div>
+        <div class="anamnesis-item">¿Uso reciente de antibióticos?</div>
+        <div class="anamnesis-item">¿Fiebre? ¿Cuántos días?</div>
+      </div>
+    </div>
+
+    <div class="card-cell full">
+      <div class="cell-title"><span class="dot"></span>Algoritmo — EDA</div>
+      <div class="flowchart">
+        <div class="flow-node inicio">Niño con diarrea aguda (&lt;14 días)</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node decision">Evaluar estado de hidratación (OMS)</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-split">
+          <div class="flow-branch">
+            <div class="flow-label">Grave</div>
+            <div class="flow-node alerta">Plan C: IV 20 mL/kg Hartmann → repetir → evaluar → Plan B</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node accion">Hospitalizar · Monitorear electrolitos · Zinc</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">Alguna</div>
+            <div class="flow-node naranja">Plan B: SRO 75 mL/kg en 4h en unidad de salud</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node accion">Re-evaluar · Si mejora → Plan A · Zinc 10–20 mg/día × 14d</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">Sin deshidratación</div>
+            <div class="flow-node accion">Plan A: SRO 10 mL/kg/deposición en casa · Continuar alimentación · Zinc</div>
+          </div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node decision">¿Heces con sangre/moco? (disentería)</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-split">
+          <div class="flow-branch">
+            <div class="flow-label">SÍ</div>
+            <div class="flow-node accion">Coprocultivo + Azitromicina 10 mg/kg/día × 3d (Shigella)</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">NO</div>
+            <div class="flow-node fin">Manejo sintomático · Control a 48–72h</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 3: DENGUE
+═══════════════════════════════════════════════════════ -->
+<div id="dengue" class="section">
+  <div class="enfermedad-header" style="background: linear-gradient(135deg, #7a1a1a 0%, #b5292a 100%)">
+    <div class="emoji">🦟</div>
+    <div>
+      <h2>Dengue</h2>
+      <p>Endémico en Sinaloa · Arbovirosis por DENV 1–4 · Transmitido por Aedes aegypti · Alta prevalencia costera</p>
+    </div>
+  </div>
+  <div class="card-grid">
+    <div class="card-cell">
+      <div class="cell-title"><span class="dot"></span>Fisiopatología</div>
+      <p>El virus DENV penetra por picadura del mosquito e infecta células dendríticas y macrófagos. La viremia activa una respuesta inmune exagerada con liberación de citocinas (TNF-α, IL-6, IL-10) → aumento de permeabilidad capilar → fuga de plasma al tercer espacio.</p>
+      <ul style="margin-top:8px">
+        <li><strong>Trombocitopenia:</strong> Destrucción inmune de plaquetas + supresión megacariocítica + consumo</li>
+        <li><strong>Fuga plasmática:</strong> 24–48h en fase crítica → ascitis, derrame pleural, hemoconcentración</li>
+        <li><strong>Fenómeno ADE (Antibody Dependent Enhancement):</strong> En segunda infección heteróloga → formas graves (dengue hemorrágico)</li>
+        <li>Daño endotelial directo por mediadores inflamatorios</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Diagnóstico</div>
+      <p><strong>Clínico + confirmación serológica/molecular:</strong></p>
+      <ul style="margin-top:6px">
+        <li><strong>NS1 Ag:</strong> Positivo días 1–5 (fase febril), alta especificidad</li>
+        <li><strong>PCR-RT:</strong> Días 1–5, gold standard, disponible en CENAPRECE/SS</li>
+        <li><strong>IgM:</strong> Positiva desde día 5, persiste semanas</li>
+        <li><strong>IgG:</strong> Infección previa o secundaria</li>
+        <li><strong>BHC seriada:</strong> Hematocrito y plaquetas cada 24h en fase crítica</li>
+        <li><strong>Hemoconcentración:</strong> ↑Hto ≥20% del basal es signo de fuga plasmática</li>
+        <li><strong>USG:</strong> Detectar derrame pleural/ascitis antes que clínica</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title rojo"><span class="dot"></span>Diagnóstico Diferencial</div>
+      <ul>
+        <li>Chikungunya (artralgias intensas, artritis, rash maculopapular)</li>
+        <li>Zika (rash, conjuntivitis, menos fiebre, microcefalia fetal)</li>
+        <li>Malaria (fiebre cíclica, esplenomegalia, gota gruesa+)</li>
+        <li>Leptospirosis (contacto con agua/animales, ictericia, insuf. renal)</li>
+        <li>Fiebre tifoidea (fiebre escalonada, hepatoesplenomegalia, bradicardia relativa)</li>
+        <li>Influenza (catarro, mialgias, sin rash típico)</li>
+        <li>Rickettsia (escaras, rash petequial centrífugo)</li>
+        <li>Meningococcemia (petequias, deterioro rápido, meningismo)</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title naranja"><span class="dot"></span>Criterios OPS/OMS 2009</div>
+      <p style="font-weight:700;font-size:0.82rem;margin-bottom:8px">Clasificación OPS 2009:</p>
+      <table class="escala-table">
+        <tr><th>Categoría</th><th>Criterios</th></tr>
+        <tr><td><span class="severity-badge sev-leve">Sin signos de alarma</span></td><td>Fiebre + 2 de: náusea/vómito, exantema, mialgias, leucopenia, prueba del torniquete+</td></tr>
+        <tr><td><span class="severity-badge sev-mod">Con signos de alarma</span></td><td>Dolor abdominal intenso, vómito persistente, sangrado mucosas, letargia, hepatomegalia, ↑Hto + ↓plaquetas rápida</td></tr>
+        <tr><td><span class="severity-badge sev-sev">Dengue grave</span></td><td>Fuga plasmática grave (choque), hemorragia grave, daño orgánico grave (hígado, SNC, corazón, riñón)</td></tr>
+      </table>
+      <p style="font-weight:700;font-size:0.82rem;margin:10px 0 4px">Prueba del torniquete (Rumpel-Leede):</p>
+      <p style="font-size:0.79rem">Inflar esfigmomanómetro entre PAS y PAD × 5 min → ≥20 petequias/pulgada² = positiva. Sensibilidad ~70%.</p>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title dorado"><span class="dot"></span>Tratamiento</div>
+      <ul>
+        <li><strong>Sin signos de alarma:</strong> Ambulatorio. Paracetamol (NO aspirina/ibuprofeno/diclofenaco), hidratación oral abundante, reposo, vigilancia domiciliaria</li>
+        <li><strong>Con signos de alarma:</strong> Hospitalización, solución cristaloide 5–7 mL/kg/h × 1–2h, luego reducir según respuesta. Monitorear Hto, diuresis, signos vitales c/1h</li>
+        <li><strong>Dengue grave/choque:</strong> Cristaloide 10–20 mL/kg bolo rápido IV, repetir según respuesta. Si no mejora → coloide. Colocar vía central si es posible</li>
+        <li><strong>Plaquetas:</strong> NO transfundir de manera rutinaria. Solo si &lt;20,000 + sangrado activo o procedimiento urgente</li>
+        <li><strong>NO usar:</strong> Corticosteroides, antibióticos (sin sobreinfección), AINES</li>
+        <li><strong>Control vectorial:</strong> Notificación obligatoria a SS Sinaloa</li>
+      </ul>
+      <div class="nota">⚠️ La "ilusión de mejoría" (caída de fiebre) marca inicio de fase crítica. Vigilar estrictamente plaquetas y Hto días 3–6.</div>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Anamnesis / Orientación de Consulta</div>
+      <div class="anamnesis-list">
+        <div class="anamnesis-item">¿Día de fiebre? (día 1–7)</div>
+        <div class="anamnesis-item">¿Dolor retroorbital?</div>
+        <div class="anamnesis-item">¿Exantema? ¿Distribución?</div>
+        <div class="anamnesis-item">¿Dolor abdominal intenso?</div>
+        <div class="anamnesis-item">¿Sangrado gingival/nasal?</div>
+        <div class="anamnesis-item">¿Vómito persistente?</div>
+        <div class="anamnesis-item">¿Zona con mosquitos/estancamiento?</div>
+        <div class="anamnesis-item">¿Dengue previo?</div>
+        <div class="anamnesis-item">¿Signos de choque? (mareo, frialdad)</div>
+        <div class="anamnesis-item">¿Otros casos en familia/colonia?</div>
+      </div>
+    </div>
+
+    <div class="card-cell full">
+      <div class="cell-title"><span class="dot"></span>Algoritmo — Dengue</div>
+      <div class="flowchart">
+        <div class="flow-node inicio">Fiebre aguda + contexto epidemiológico Sinaloa</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node decision">NS1 Ag / PCR-RT (días 1–5) o IgM (≥día 5)</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node decision">¿Signos de alarma presentes?</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-split">
+          <div class="flow-branch">
+            <div class="flow-label">NO</div>
+            <div class="flow-node accion">Ambulatorio: paracetamol, hidratación oral, reposo. Control BHC diaria días 3–6</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node decision">¿Aparecen signos de alarma o plaquetas &lt;100,000?</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node alerta">SÍ → Hospitalizar inmediatamente</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">SÍ</div>
+            <div class="flow-node naranja">Hospitalizar: cristaloide IV, BHC c/4–6h, monitoreo estricto</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-node decision">¿Choque o fuga masiva de plasma?</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-split">
+              <div class="flow-branch">
+                <div class="flow-label">SÍ</div>
+                <div class="flow-node alerta">⚠️ UCI: bolo 10–20 mL/kg IV, coloide si no responde, manejo multidisciplinario</div>
+              </div>
+              <div class="flow-branch">
+                <div class="flow-label">NO</div>
+                <div class="flow-node accion">Continuar cristaloide 5–7 mL/kg/h, titular según diuresis</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 4: INFECCIONES DE PIEL
+═══════════════════════════════════════════════════════ -->
+<div id="piel" class="section">
+  <div class="enfermedad-header" style="background: linear-gradient(135deg, #6b4a1a 0%, #c8600a 100%)">
+    <div class="emoji">🩹</div>
+    <div>
+      <h2>Infecciones de Piel y Tejidos Blandos</h2>
+      <p>Impétigo, celulitis, abscesos, piodermias · Frecuentes en clima cálido-húmedo de Sinaloa</p>
+    </div>
+  </div>
+  <div class="card-grid">
+    <div class="card-cell">
+      <div class="cell-title"><span class="dot"></span>Fisiopatología</div>
+      <p><strong>Impétigo:</strong> S. aureus (principalmente) y S. pyogenes colonizan piel a través de microabrasiones. La exfoliatoxina del S. aureus (impétigo bulloso) rompe la desmoglina-1 → formación de bulas. Favorecido por calor, humedad, falta de higiene.</p>
+      <p style="margin-top:8px"><strong>Celulitis:</strong> Bacterias (S. aureus, S. pyogenes) acceden a dermis/hipodermis a través de solución de continuidad → inflamación difusa con edema, eritema, calor, dolor sin fluctuación.</p>
+      <p style="margin-top:8px"><strong>Absceso:</strong> S. aureus (SARM-AC frecuente en México) forma colección purulenta localizada con necrosis central. SARM produce leucocidina de Panton-Valentine (LPV) → mayor virulencia.</p>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Diagnóstico</div>
+      <p>Principalmente <strong>clínico</strong>:</p>
+      <ul style="margin-top:6px">
+        <li><strong>Impétigo no bulloso:</strong> Costras melicéricas amarillentas, zona expuesta (cara, extremidades), pruriginosas, sin fiebre</li>
+        <li><strong>Impétigo bulloso:</strong> Bulas frágiles con líquido amarillento turbio, S. aureus fago tipo II</li>
+        <li><strong>Celulitis:</strong> Eritema difuso con bordes mal definidos, edema, calor, dolor. Puede haber fiebre y linfangitis</li>
+        <li><strong>Absceso:</strong> Colección fluctuante, eritema perilesional, puede drenar espontáneamente. Fiebre frecuente</li>
+        <li><strong>Laboratorio:</strong> BHC + PCR en celulitis grave o fiebre alta. Cultivo de absceso si se drena</li>
+        <li><strong>USG partes blandas:</strong> Diferencia celulitis de absceso si duda clínica</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title rojo"><span class="dot"></span>Diagnóstico Diferencial</div>
+      <ul>
+        <li>Dermatitis de contacto (distribución geométrica, sin fiebre, no fluctúa)</li>
+        <li>Eccema infectado (antecedente atópico, fisuras, xerosis)</li>
+        <li>Erisipela (demarcación neta, elevada, eritema brillante, S. pyogenes)</li>
+        <li>Fascitis necrotizante (dolor desproporcionado, crepitación, deterioro rápido — URGENCIA)</li>
+        <li>Herpes zóster (distribución dermatomal, vesículas, dolor urente)</li>
+        <li>Varicela sobreinfectada (lesiones en distintas etapas)</li>
+        <li>Osteomielitis (dolor óseo, limitación articular, fiebre persistente)</li>
+        <li>Artritis séptica (articulación inflamada, impotencia funcional, fiebre)</li>
+        <li>Reacción a picadura (antecedente, urticaria, sin progresión)</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title naranja"><span class="dot"></span>Criterios de Gravedad</div>
+      <p style="font-weight:700;font-size:0.82rem;margin-bottom:8px">Señales de alarma — infección grave:</p>
+      <ul>
+        <li>Fiebre alta (&gt;39°C) + toxicidad sistémica</li>
+        <li>Progresión rápida de eritema en horas</li>
+        <li>Dolor severo desproporcionado (¡fascitis!)</li>
+        <li>Crepitación subcutánea (gas — urgencia quirúrgica)</li>
+        <li>Ampollas hemorrágicas, necrosis</li>
+        <li>Inmunocompromiso (diabetes, VIH, quimioterapia)</li>
+        <li>Falla a antibiótico VO a 48–72h</li>
+      </ul>
+      <p style="font-weight:700;font-size:0.82rem;margin:10px 0 4px">SARM-CA (Sinaloa tiene alta prevalencia):</p>
+      <p style="font-size:0.79rem">Sospechar si: absceso recurrente, sin mejoría a beta-lactámicos, contacto con personas con infecciones recurrentes de piel, prácticas deportivas de contacto.</p>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title dorado"><span class="dot"></span>Tratamiento</div>
+      <ul>
+        <li><strong>Impétigo localizado:</strong> Mupirocina tópica 2% c/8h × 5 días (primera línea) o ácido fusídico</li>
+        <li><strong>Impétigo extenso:</strong> Cefalexina 25–50 mg/kg/día c/8h VO × 7 días, o amoxicilina-clavulanato</li>
+        <li><strong>Celulitis no complicada:</strong> Cefalexina 50 mg/kg/día c/6–8h × 5–7 días VO</li>
+        <li><strong>Sospecha SARM-CA:</strong> TMP/SMX 8–12 mg/kg/día de TMP c/12h × 5–7 días, o clindamicina 30 mg/kg/día c/8h (si sensible)</li>
+        <li><strong>Absceso:</strong> Incisión y drenaje (primera línea) + antibiótico si &gt;2 cm, celulitis asociada, inmunocompromiso o fiebre</li>
+        <li><strong>Celulitis grave/hospitalización:</strong> Clindamicina IV 25–40 mg/kg/día c/8h o cefazolina IV, o vancomicina si SARM confirmado</li>
+        <li><strong>Medidas locales:</strong> Limpieza con agua y jabón, cubrir lesiones, higiene de manos</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Anamnesis / Orientación de Consulta</div>
+      <div class="anamnesis-list">
+        <div class="anamnesis-item">¿Inicio y evolución de la lesión?</div>
+        <div class="anamnesis-item">¿Fiebre asociada?</div>
+        <div class="anamnesis-item">¿Traumatismo, picadura, rasguño previo?</div>
+        <div class="anamnesis-item">¿Lesiones similares en contactos?</div>
+        <div class="anamnesis-item">¿Recurrencia? ¿Otras lesiones?</div>
+        <div class="anamnesis-item">¿Antibióticos previos? ¿Respuesta?</div>
+        <div class="anamnesis-item">¿Enfermedades de base? (DM, inmunosupresión)</div>
+        <div class="anamnesis-item">¿Dolor local, fluctuación?</div>
+        <div class="anamnesis-item">¿Actividades deportivas de contacto?</div>
+        <div class="anamnesis-item">¿Higiene general y domiciliaria?</div>
+      </div>
+    </div>
+
+    <div class="card-cell full">
+      <div class="cell-title"><span class="dot"></span>Algoritmo — Infecciones de Piel</div>
+      <div class="flowchart">
+        <div class="flow-node inicio">Lesión de piel infecciosa</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node decision">¿Signos de fascitis o toxicidad sistémica severa?</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-split">
+          <div class="flow-branch">
+            <div class="flow-label">SÍ</div>
+            <div class="flow-node alerta">⚠️ URGENCIA QUIRÚRGICA — Hospitalizar, cirugía, vancomicina IV</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">NO → Clasificar</div>
+            <div class="flow-node decision">¿Fluctuante (absceso) o difuso (celulitis) o superficial (impétigo)?</div>
+            <div class="flow-arrow"></div>
+            <div class="flow-split" style="gap:10px">
+              <div class="flow-branch" style="max-width:150px">
+                <div class="flow-label">Absceso</div>
+                <div class="flow-node accion" style="font-size:0.76rem">I&amp;D + cultivo. Si &gt;2cm o fiebre: TMP/SMX o clindamicina VO</div>
+              </div>
+              <div class="flow-branch" style="max-width:150px">
+                <div class="flow-label">Celulitis</div>
+                <div class="flow-node accion" style="font-size:0.76rem">Cefalexina VO 5–7d. Sospecha SARM: TMP/SMX. Sin mejora 48h: hospitalizar</div>
+              </div>
+              <div class="flow-branch" style="max-width:150px">
+                <div class="flow-label">Impétigo</div>
+                <div class="flow-node accion" style="font-size:0.76rem">Localizado: mupirocina tópica. Extenso: cefalexina VO × 7d</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 5: PARASITOSIS
+═══════════════════════════════════════════════════════ -->
+<div id="parasitosis" class="section">
+  <div class="enfermedad-header" style="background: linear-gradient(135deg, #2c4a1a 0%, #4a7a2a 50%, #1a4b6a 100%)">
+    <div class="emoji">🔬</div>
+    <div>
+      <h2>Parasitosis Intestinal</h2>
+      <p>Alta prevalencia en Sinaloa · Giardia, Entamoeba, Ascaris, Oxiuros · Relacionada con condiciones sanitarias</p>
+    </div>
+  </div>
+  <div class="card-grid">
+    <div class="card-cell">
+      <div class="cell-title"><span class="dot"></span>Fisiopatología</div>
+      <p><strong>Giardia lamblia:</strong> Trofozoítos se adhieren a microvellosidades duodenales mediante discos de succión → lesión mecánica + inflamación → malabsorción de grasas y disacáridos → diarrea crónica, flatulencia, esteatorrea.</p>
+      <p style="margin-top:8px"><strong>Entamoeba histolytica:</strong> Los trofozoítos invaden la mucosa colónica → úlceras en "botón de camisa" → disentería amibiana. Vía hematógena → absceso hepático amibiano.</p>
+      <p style="margin-top:8px"><strong>Ascaris lumbricoides:</strong> Larvas migran por pulmón (síndrome de Löffler) → maduran en intestino delgado. Adultos compiten por nutrientes → desnutrición, anemia, obstrucción intestinal en cargas altas.</p>
+      <p style="margin-top:8px"><strong>Enterobius (oxiuros):</strong> Migración nocturna de hembras al perianal para ovipositar → prurito intenso → rascado → reinfección (ciclo mano-boca).</p>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Diagnóstico</div>
+      <ul>
+        <li><strong>EGH (Examen General de Heces):</strong> Coproparasitoscópico seriado × 3 muestras en días alternos. Detecta quistes, huevos, trofozoítos</li>
+        <li><strong>Giardia:</strong> ELISA fecal para Ag de Giardia (sensibilidad &gt;90%) o PCR. EGH puede ser negativo en infección leve</li>
+        <li><strong>E. histolytica:</strong> EGH + PCR diferencial (E. histolytica vs E. dispar). Serología (IHA) en absceso hepático. USG hepático si se sospecha absceso</li>
+        <li><strong>Oxiuros:</strong> Test de Graham (cinta adhesiva perianal en la mañana antes de aseo), no EGH</li>
+        <li><strong>Ascaris:</strong> EGH (huevos típicos), puede verse gusano en heces</li>
+        <li><strong>Eosinofilia:</strong> Presente en helmintos (no en protozoarios), orienta diagnóstico</li>
+        <li><strong>BHC:</strong> Eosinofilia ≥5% sugiere helmintiasis</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title rojo"><span class="dot"></span>Diagnóstico Diferencial</div>
+      <ul>
+        <li>EDA viral (aguda, autolimitada, sin eosinofilia)</li>
+        <li>Intolerancia a lactosa (relación con ingesta, sin fiebre, sin parásitos)</li>
+        <li>Enfermedad inflamatoria intestinal (crónica, sangre, respuesta inflamatoria sistémica)</li>
+        <li>Alergia alimentaria (relación temporal con alimento específico)</li>
+        <li>Síndrome de intestino irritable (funcional, sin alteración estructural)</li>
+        <li>Fibrosis quística (esteatorrea + síntomas pulmonares + falla de medro)</li>
+        <li>Colitis ulcerativa/Crohn (crónico, pérdida de peso, sangre)</li>
+        <li>Apendicitis crónica (dolor recurrente en FID)</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title naranja"><span class="dot"></span>Cuadros Clínicos / Criterios</div>
+      <table class="escala-table">
+        <tr><th>Parásito</th><th>Síntomas clave</th><th>Complicaciones</th></tr>
+        <tr><td><strong>Giardia</strong></td><td>Diarrea crónica, heces pastosas/grasosas, flatulencia, distensión, mal olor, anorexia</td><td>Malabsorción, retraso en crecimiento, deficiencia de vitaminas liposolubles</td></tr>
+        <tr><td><strong>E. histolytica</strong></td><td>Disentería (moco-sangre), cólico, tenesmo, fiebre. Portador asintomático (90%)</td><td>Absceso hepático, peritonitis, amebiasis pulmonar</td></tr>
+        <tr><td><strong>Ascaris</strong></td><td>Asintomático con carga baja; distensión, dolor, náusea; síndrome de Löffler (larvas)</td><td>Obstrucción intestinal, biliar, apendicular. Desnutrición</td></tr>
+        <tr><td><strong>Oxiuros</strong></td><td>Prurito anal nocturno intenso, bruxismo, inquietud, vulvovaginitis en niñas</td><td>Insomnio, rascado → sobreinfección</td></tr>
+        <tr><td><strong>Trichuris</strong></td><td>Disentería crónica, prolapso rectal en infestación grave, anemia</td><td>Prolapso rectal, anemia crónica</td></tr>
+        <tr><td><strong>Uncinarias</strong></td><td>Anemia ferropénica, dolor epigástrico, dermatitis larval (larva currens)</td><td>Anemia severa, hipoalbuminemia</td></tr>
+      </table>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title dorado"><span class="dot"></span>Tratamiento</div>
+      <ul>
+        <li><strong>Giardia:</strong> Metronidazol 15 mg/kg/día c/8h × 5–7 días (primera línea). Alternativa: tinidazol 50 mg/kg DU (máx 2g). Tratar a contactos sintomáticos</li>
+        <li><strong>E. histolytica (sintomática):</strong> Metronidazol 30–40 mg/kg/día c/8h × 7–10 días + paromomicina 25–35 mg/kg/día c/8h × 7 días (para eliminar quistes luminales)</li>
+        <li><strong>Absceso hepático amibiano:</strong> Metronidazol IV + drenaje si no responde en 3–5 días o riesgo de ruptura</li>
+        <li><strong>Ascaris:</strong> Albendazol 400 mg DU (≥2 años) o mebendazol 100 mg c/12h × 3 días. Repetir a 2 semanas</li>
+        <li><strong>Oxiuros:</strong> Albendazol 400 mg DU + repetir a 2 semanas. Tratar a TODA la familia. Lavado de ropa y sábanas en agua caliente</li>
+        <li><strong>Trichuris:</strong> Mebendazol 100 mg c/12h × 3 días o albendazol 400 mg/día × 3 días</li>
+        <li><strong>Uncinarias:</strong> Albendazol 400 mg DU + hierro si anemia</li>
+        <li><strong>Prevención:</strong> Lavado de manos, agua potable, higiene de alimentos, letrinización</li>
+      </ul>
+    </div>
+
+    <div class="card-cell">
+      <div class="cell-title azul"><span class="dot"></span>Anamnesis / Orientación de Consulta</div>
+      <div class="anamnesis-list">
+        <div class="anamnesis-item">¿Tipo y duración de diarrea?</div>
+        <div class="anamnesis-item">¿Prurito anal, especialmente nocturno?</div>
+        <div class="anamnesis-item">¿Distensión abdominal/flatulencia?</div>
+        <div class="anamnesis-item">¿Sangre o moco en heces?</div>
+        <div class="anamnesis-item">¿Fuente de agua? ¿Agua de pozo?</div>
+        <div class="anamnesis-item">¿Consume frutas/verduras crudas?</div>
+        <div class="anamnesis-item">¿Contacto con animales domésticos?</div>
+        <div class="anamnesis-item">¿Falla de medro / bajo peso?</div>
+        <div class="anamnesis-item">¿Casos similares en la familia?</div>
+        <div class="anamnesis-item">¿Antiparasitarios previos?</div>
+      </div>
+    </div>
+
+    <div class="card-cell full">
+      <div class="cell-title"><span class="dot"></span>Algoritmo — Parasitosis</div>
+      <div class="flowchart">
+        <div class="flow-node inicio">Sospecha de parasitosis intestinal</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node decision">¿Síntomas predominantes?</div>
+        <div class="flow-arrow"></div>
+        <div class="flow-split">
+          <div class="flow-branch">
+            <div class="flow-label">Prurito anal nocturno</div>
+            <div class="flow-node accion">Test de Graham → Oxiuros → Albendazol 400mg DU + tratar familia + higiene</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">Diarrea crónica/grasa</div>
+            <div class="flow-node accion">ELISA Ag Giardia o EGH seriado → Giardia+ → Metronidazol 15 mg/kg/día × 7d</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">Disentería + fiebre</div>
+            <div class="flow-node naranja">PCR E. histolytica → Metronidazol 30–40 mg/kg/día × 10d + paromomicina. USG si absceso</div>
+          </div>
+          <div class="flow-branch">
+            <div class="flow-label">Eosinofilia + asintomático</div>
+            <div class="flow-node accion">EGH seriado → Helmintos → Albendazol 400mg DU o mebendazol × 3d</div>
+          </div>
+        </div>
+        <div class="flow-arrow"></div>
+        <div class="flow-node fin">Control EGH post-tratamiento a 2–4 semanas · Medidas de prevención · Tratar contactos</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════
+     SECCIÓN 6: ANEMIAS — GUÍA COMPLETA
+═══════════════════════════════════════════════════════ -->
+<div id="anemias" class="section">
+  <div class="enfermedad-header" style="background: linear-gradient(135deg, #4a1a1a 0%, #b5292a 50%, #8a1b5a 100%)">
+    <div class="emoji">🩸</div>
+    <div>
+      <h2>Anemias en Pediatría</h2>
+      <p>Algoritmo completo de clasificación, diagnóstico y tratamiento · Por deficiencia de hierro, hemolítica, megaloblástica, aplásica y más</p>
+    </div>
+  </div>
+
+  <div class="anemia-flow" style="margin-top:0; border-radius: 0 0 var(--radio) var(--radio); border-top:none">
+
+    <h3 style="color:var(--rojo); margin-bottom:24px; font-family:'Playfair Display',serif; font-size:1.3rem">
+      🧪 Paso 1: Confirmar Anemia (Valores normales por edad)
+    </h3>
+    <table class="escala-table" style="max-width:600px">
+      <tr><th>Edad</th><th>Hb mínima (g/dL)</th><th>Htc mínimo (%)</th></tr>
+      <tr><td>Recién nacido</td><td>14.0</td><td>42</td></tr>
+      <tr><td>2 semanas</td><td>12.5</td><td>39</td></tr>
+      <tr><td>3 meses</td><td>9.5</td><td>31</td></tr>
+      <tr><td>6 meses – 6 años</td><td>11.0</td><td>33</td></tr>
+      <tr><td>6–14 años</td><td>12.0</td><td>36</td></tr>
+      <tr><td>Adolescente ♂</td><td>13.0</td><td>37</td></tr>
+      <tr><td>Adolescente ♀</td><td>12.0</td><td>36</td></tr>
+    </table>
+    <div class="nota">Definición OMS de anemia: Hb 2 desviaciones estándar por debajo de la media para edad y sexo (valores aproximados arriba).</div>
+
+    <h3 style="color:var(--rojo); margin: 32px 0 16px; font-family:'Playfair Display',serif; font-size:1.3rem">
+      🔬 Paso 2: VCM → Clasificación morfológica
+    </h3>
+
+    <div class="flowchart">
+      <div class="flow-node inicio">Anemia confirmada por Hb/Htc</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node accion">Solicitar: BHC completa con índices eritrocitarios + reticulocitos + frotis de sangre periférica</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node decision">VCM (volumen corpuscular medio)</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-split" style="align-items:flex-start">
+
+        <!-- MICROCÍTICA -->
+        <div class="flow-branch" style="max-width:220px">
+          <div class="flow-label" style="font-size:0.8rem; font-weight:800; color:#c0392b">MICROCÍTICA (VCM &lt;80 fL)</div>
+          <div class="flow-node alerta" style="font-size:0.78rem; text-align:left; padding:10px 14px">
+            <strong>+ Hipocrómica (HCM baja)</strong><br>
+            Causas:<br>
+            • Ferropenia (más común)<br>
+            • Talasemia<br>
+            • Anemia de enf. crónica<br>
+            • Intoxicación por plomo<br>
+            • Sideroblástica
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node accion" style="font-size:0.76rem; text-align:left">
+            <strong>Distinguir:</strong> Ferritina + Fe sérico + TIBC + Frotis<br>
+            ↓Ferritina + ↓Fe + ↑TIBC = <strong>Ferropenia</strong><br>
+            ↓/N Fe + ↑Ferritina + ↓TIBC = <strong>Enf. crónica</strong><br>
+            Hb electroforesis → Talasemia
+          </div>
+        </div>
+
+        <!-- NORMOCÍTICA -->
+        <div class="flow-branch" style="max-width:220px">
+          <div class="flow-label" style="font-size:0.8rem; font-weight:800; color:#8e44ad">NORMOCÍTICA (VCM 80–100 fL)</div>
+          <div class="flow-node" style="background:#faf5ff;border:2px solid #8e44ad;color:#8e44ad;font-size:0.78rem; text-align:left; padding:10px 14px; border-radius:8px">
+            Causas:<br>
+            • Hemólisis aguda<br>
+            • Aplasia medular<br>
+            • Anemia de enf. crónica<br>
+            • Sangrado agudo<br>
+            • Insuf. renal crónica<br>
+            • Hipotiroidismo
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node accion" style="font-size:0.76rem; text-align:left">
+            <strong>Distinguir:</strong> Reticulocitos<br>
+            <strong>↑Reticulocitos</strong> → Hemolítica<br>
+            (LDH↑, Bili↑, Haptoglobina↓)<br>
+            <strong>↓Reticulocitos</strong> → Aplasia o IRC<br>
+            → Aspirado de MO si aplasia
+          </div>
+        </div>
+
+        <!-- MACROCÍTICA -->
+        <div class="flow-branch" style="max-width:220px">
+          <div class="flow-label" style="font-size:0.8rem; font-weight:800; color:#2980b9">MACROCÍTICA (VCM &gt;100 fL)</div>
+          <div class="flow-node" style="background:#f0f8ff;border:2px solid #2980b9;color:#2980b9;font-size:0.78rem; text-align:left; padding:10px 14px; border-radius:8px">
+            Causas:<br>
+            • Def. ácido fólico<br>
+            • Def. vitamina B12<br>
+            • Hipotiroidismo<br>
+            • Hepatopatía crónica<br>
+            • Sínd. mielodisplásico<br>
+            • Fármacos (MTX, AZT)
+          </div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node accion" style="font-size:0.76rem; text-align:left">
+            <strong>Distinguir:</strong><br>
+            Niveles B12 + Folato<br>
+            Frotis: megaloblastos, neutrófilos hipersegmentados<br>
+            ↓Folato → Def. folato<br>
+            ↓B12 → Anemia perniciosa u otras
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- TIPOS DE ANEMIA DETALLADOS -->
+    <h3 style="color:var(--rojo); margin: 40px 0 20px; font-family:'Playfair Display',serif; font-size:1.3rem">
+      📋 Paso 3: Características de cada tipo de anemia
+    </h3>
+
+    <div class="anemia-grid">
+      <div class="anemia-card ac-ferropenica">
+        <h4>🔴 Anemia Ferropénica</h4>
+        <p style="font-size:0.79rem;color:#888;margin-bottom:8px">Más común en México (40–50% niños 6–24m)</p>
+        <ul>
+          <li>VCM &lt;80 fL, HCM &lt;27 pg</li>
+          <li>Ferritina &lt;12 ng/mL (dorado)</li>
+          <li>Fe sérico ↓, TIBC ↑</li>
+          <li>ADE/RDW &gt;14% (anisocitosis)</li>
+          <li>Frotis: microcitos, hipocromos, dianocitos</li>
+          <li>Reticulocitos normales/bajos</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#c0392b">Causas pediátricas:</p>
+        <ul>
+          <li>Ingesta insuficiente de Fe (alimentación complementaria tardía)</li>
+          <li>LME exclusiva prolongada &gt;6 meses sin Fe</li>
+          <li>Fórmulas sin fortifi­car</li>
+          <li>Pérdidas: sangrado GI (vaca, ERGE), parasitosis (uncinarias)</li>
+          <li>Prematurez (reservas insuficientes)</li>
+          <li>Absorción disminuida: celiaquía, cirugías GI</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#c0392b">Tratamiento:</p>
+        <ul>
+          <li>Sulfato ferroso 3–6 mg/kg/día de Fe elemental c/24h en ayunas × 3 meses</li>
+          <li>Vitamina C co-administrada para absorción</li>
+          <li>Corrección de causa base</li>
+          <li>Control de Hb a 4 semanas (↑&gt;1 g/dL confirma diagnóstico)</li>
+          <li>Continuar 2–3 meses tras normalización de Hb para reponer reservas</li>
+        </ul>
+      </div>
+
+      <div class="anemia-card ac-hemolitica">
+        <h4>🟣 Anemia Hemolítica</h4>
+        <p style="font-size:0.79rem;color:#888;margin-bottom:8px">Destrucción prematura de eritrocitos (&lt;120 días)</p>
+        <ul>
+          <li>Reticulocitos ↑↑ (&gt;2%)</li>
+          <li>LDH elevada, BiliI ↑ (indirecta)</li>
+          <li>Haptoglobina ↓ (intravascular)</li>
+          <li>Esferocitos, esquistocitos, células en hoz en frotis</li>
+          <li>Coombs directo (autoinmune)</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#8e44ad">Causas pediátricas:</p>
+        <ul>
+          <li><strong>Corpusculares (defecto intrínseco):</strong></li>
+          <li>Drepanocitosis (HbS)</li>
+          <li>Esferocitosis hereditaria (fragilidad osmótica+)</li>
+          <li>Déficit de G6PD (favismo, exposición a oxidantes)</li>
+          <li>Talasemia</li>
+          <li><strong>Extracorpusculares (causa externa):</strong></li>
+          <li>AHAI (Coombs+): infecciones, medicamentos, LES</li>
+          <li>SHU (ECEH O157)</li>
+          <li>Malaria</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#8e44ad">Tratamiento:</p>
+        <ul>
+          <li>Ácido fólico 1–5 mg/día (todas las hemolíticas crónicas)</li>
+          <li>AHAI: prednisona 1–2 mg/kg/día, IgIV, rituximab</li>
+          <li>G6PD: evitar desencadenantes</li>
+          <li>Drepanocitosis: hidroxiurea, profilaxis penicilina, vacunas, transfusión en crisis</li>
+          <li>Esferocitosis grave: esplenectomía (&gt;5–6 años)</li>
+        </ul>
+      </div>
+
+      <div class="anemia-card ac-vb12">
+        <h4>🔵 Anemia Megaloblástica</h4>
+        <p style="font-size:0.79rem;color:#888;margin-bottom:8px">Deficiencia de B12 o ácido fólico → error síntesis DNA</p>
+        <ul>
+          <li>VCM &gt;100 fL, megaloblastos</li>
+          <li>Neutrófilos hipersegmentados (5 lóbulos o más)</li>
+          <li>Pancitopenia en casos graves</li>
+          <li>↓Vitamina B12 y/o ↓Folato sérico</li>
+          <li>Homocisteína elevada (ambas)</li>
+          <li>Ácido metilmalónico ↑ (específico B12)</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#2980b9">Causas pediátricas:</p>
+        <ul>
+          <li><strong>Def. B12:</strong> Madres vegetarianas (lactante), anemia perniciosa juvenil, cirugía gástrica, Crohn, infección por H. pylori severa</li>
+          <li><strong>Def. folato:</strong> Prematurez, ingesta insuficiente, hemólisis crónica, anticonvulsivantes (fenitoína), sulfonamidas, MTX</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#2980b9">Tratamiento:</p>
+        <ul>
+          <li>Def. B12: Cianocobalamina IM 1000 µg/día × 7d → semanal × 4 → mensual. VO si no es malabsorción</li>
+          <li>Def. folato: Ácido fólico 1–5 mg/día VO × 4 meses. Tratar causa base</li>
+          <li>En anemia perniciosa: B12 de por vida</li>
+        </ul>
+      </div>
+
+      <div class="anemia-card ac-aplasica">
+        <h4>🟠 Anemia Aplásica</h4>
+        <p style="font-size:0.79rem;color:#888;margin-bottom:8px">Fallo de médula ósea → pancitopenia</p>
+        <ul>
+          <li>Pancitopenia: ↓Hb + ↓leucocitos + ↓plaquetas</li>
+          <li>Reticulocitos MUY bajos (&lt;1%)</li>
+          <li>MO hipocelular (criterio diagnóstico)</li>
+          <li>No esplenomegalia en aplasia pura</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#d35400">Causas pediátricas:</p>
+        <ul>
+          <li>Idiopática (70% — inmune)</li>
+          <li>Anemia de Fanconi (congénita, manchas café con leche, anomalías radiales)</li>
+          <li>Virus: hepatitis (no-A, no-B, no-C), VEB, CMV, parvovirus B19</li>
+          <li>Fármacos: cloranfenicol, AINEs, antiepilépticos</li>
+          <li>Quimioterapia, radiación</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#d35400">Tratamiento:</p>
+        <ul>
+          <li>Referencia urgente a hematología pediátrica</li>
+          <li>Trasplante de MO alogénico (primera línea en aplasia severa con donador compatible)</li>
+          <li>Globulina antitimocítica (GAT) + ciclosporina (sin donador)</li>
+          <li>Soporte: transfusiones, antibióticos profilácticos, G-CSF</li>
+          <li>Evitar transfusiones innecesarias antes del trasplante</li>
+        </ul>
+      </div>
+
+      <div class="anemia-card ac-cronica">
+        <h4>🟢 Anemia de Enfermedad Crónica</h4>
+        <p style="font-size:0.79rem;color:#888;margin-bottom:8px">Inflamación crónica → secuestro de hierro → eritropoyesis limitada</p>
+        <ul>
+          <li>Normocítica-normocrómica (70%) o leve microcítica</li>
+          <li>Fe sérico ↓ pero Ferritina ↑ o normal (clave diagnóstica)</li>
+          <li>TIBC normal o disminuida (≠ ferropenia)</li>
+          <li>Reticulocitos normales/bajos</li>
+          <li>Hepcidina ↑ (mediador central)</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#27ae60">Causas pediátricas:</p>
+        <ul>
+          <li>Artritis idiopática juvenil (AIJ)</li>
+          <li>Infecciones crónicas (TB, osteomielitis, endocarditis)</li>
+          <li>Enfermedades inflamatorias intestinales</li>
+          <li>LES y otras enfermedades autoinmunes</li>
+          <li>Insuficiencia renal crónica (↓EPO)</li>
+          <li>Neoplasias</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#27ae60">Tratamiento:</p>
+        <ul>
+          <li>Tratar enfermedad de base (prioridad)</li>
+          <li>EPO recombinante en IRC</li>
+          <li>Fe IV solo si deficiencia coexistente confirmada</li>
+          <li>Transfusión en anemia sintomática grave</li>
+        </ul>
+      </div>
+
+      <div class="anemia-card ac-drepa">
+        <h4>🩵 Drepanocitosis (Anemia de células falciformes)</h4>
+        <p style="font-size:0.79rem;color:#888;margin-bottom:8px">Mutación HbS → células falciformes en hipoxia → vaso-oclusión</p>
+        <ul>
+          <li>Anemia hemolítica crónica moderada-grave</li>
+          <li>Células en hoz en frotis (drepanocitos)</li>
+          <li>Electroforesis Hb: patrón SS</li>
+          <li>HbF variable (protectora si alta)</li>
+          <li>Leucocitosis crónica basal</li>
+          <li>Crisis vaso-oclusiva: dolor agudo intenso</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#16a085">Complicaciones pediátricas:</p>
+        <ul>
+          <li>Síndrome torácico agudo (urgencia)</li>
+          <li>ACV (mayor riesgo 2–16 años)</li>
+          <li>Esplenomegalia → secuestro esplénico</li>
+          <li>Infecciones graves (asplenia funcional: Streptococcus, H. influenzae)</li>
+          <li>Priapismo, úlceras maleolares (adolescente)</li>
+          <li>Osteonecrosis, retinopatía</li>
+        </ul>
+        <p style="font-size:0.79rem;font-weight:700;margin-top:8px;color:#16a085">Tratamiento:</p>
+        <ul>
+          <li>Penicilina V profiláctica desde los 2 meses hasta los 5 años</li>
+          <li>Vacunas: neumococo, Hib, meningococo</li>
+          <li>Hidroxiurea: ↑HbF, reduce crisis (inicio &gt;9 meses)</li>
+          <li>Ácido fólico diario</li>
+          <li>Crisis dolorosa: analgesia (AINES + opioides), hidratación IV</li>
+          <li>Transfusión / exanguinotransfusión: ACV, síndrome torácico, aplasia</li>
+          <li>TMO: opción curativa</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- RESUMEN DIFERENCIAL -->
+    <h3 style="color:var(--rojo); margin: 40px 0 16px; font-family:'Playfair Display',serif; font-size:1.3rem">
+      🧭 Resumen Diferencial Rápido — Tabla Maestra
+    </h3>
+    <div style="overflow-x:auto">
+    <table class="escala-table">
+      <tr>
+        <th>Tipo</th><th>VCM</th><th>Reticulocitos</th><th>Ferritina</th><th>Fe sérico</th><th>TIBC</th><th>Coombs</th><th>Clave diagnóstica</th>
+      </tr>
+      <tr><td><strong>Ferropénica</strong></td><td>↓</td><td>N/↓</td><td>↓↓</td><td>↓</td><td>↑</td><td>—</td><td>Ferritina &lt;12, respuesta a Fe</td></tr>
+      <tr><td><strong>Enf. crónica</strong></td><td>N/↓</td><td>N/↓</td><td>N/↑</td><td>↓</td><td>N/↓</td><td>—</td><td>Ferritina alta + Fe bajo</td></tr>
+      <tr><td><strong>Talasemia menor</strong></td><td>↓↓</td><td>N/↑</td><td>N/↑</td><td>N/↑</td><td>N</td><td>—</td><td>Electro Hb: ↑HbA2</td></tr>
+      <tr><td><strong>Megaloblástica B12</strong></td><td>↑</td><td>↓</td><td>N</td><td>N</td><td>N</td><td>—</td><td>B12 ↓, metilmalónico ↑, neutrófilos hiperseg.</td></tr>
+      <tr><td><strong>Megaloblástica folato</strong></td><td>↑</td><td>↓</td><td>N</td><td>N</td><td>N</td><td>—</td><td>Folato ↓, neutrófilos hiperseg., sin déficit B12</td></tr>
+      <tr><td><strong>Hemolítica autoinmune</strong></td><td>N/↑</td><td>↑↑</td><td>↑</td><td>↑</td><td>N</td><td>+</td><td>Coombs+, LDH↑, Bili↑ indirecta</td></tr>
+      <tr><td><strong>G6PD</strong></td><td>N</td><td>↑</td><td>↑</td><td>↑</td><td>N</td><td>—</td><td>Crisis tras oxidante, Heinz bodies</td></tr>
+      <tr><td><strong>Drepanocitosis</strong></td><td>N</td><td>↑</td><td>↑</td><td>↑</td><td>N</td><td>—</td><td>Electro Hb: HbSS, drepanocitos en frotis</td></tr>
+      <tr><td><strong>Aplásica</strong></td><td>N/↑</td><td>↓↓</td><td>N/↑</td><td>↑</td><td>↓</td><td>—</td><td>Pancitopenia, MO hipocelular</td></tr>
+    </table>
+    </div>
+
+    <!-- ALGORITMO VISUAL ANEMIA -->
+    <h3 style="color:var(--rojo); margin: 40px 0 16px; font-family:'Playfair Display',serif; font-size:1.3rem">
+      🔄 Algoritmo Integrado: Diagnóstico y Tratamiento de Anemia Pediátrica
+    </h3>
+    <div class="flowchart">
+      <div class="flow-node inicio">Sospecha de anemia pediátrica (palidez, fatigabilidad, taquicardia, falla de medro)</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node accion">BHC completa + índices eritrocitarios + reticulocitos + frotis de sangre periférica</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node decision">¿Hb por debajo del valor mínimo para edad?</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-split">
+        <div class="flow-branch" style="max-width:130px">
+          <div class="flow-label">NO</div>
+          <div class="flow-node fin" style="font-size:0.76rem">No anemia. Buscar otra causa de síntomas</div>
+        </div>
+        <div class="flow-branch" style="max-width:500px">
+          <div class="flow-label">SÍ → Clasificar por VCM</div>
+          <div class="flow-node decision">VCM: ¿Microcítica / Normocítica / Macrocítica?</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-split" style="gap:12px">
+            <div class="flow-branch" style="max-width:170px">
+              <div class="flow-label" style="color:#c0392b">MICROCÍTICA</div>
+              <div class="flow-node accion" style="font-size:0.74rem;text-align:left">Ferritina + Fe + TIBC<br>↓Ferritina → Ferropenia → Sulfato ferroso 3–6 mg/kg/d × 3m<br>Fe↓+Ferritina↑ → EC → tratar causa<br>Electro Hb → Talasemia → ácido fólico</div>
+            </div>
+            <div class="flow-branch" style="max-width:170px">
+              <div class="flow-label" style="color:#8e44ad">NORMOCÍTICA</div>
+              <div class="flow-node accion" style="font-size:0.74rem;text-align:left">Reticulocitos<br>↑ → Hemolítica → Coombs, LDH, Bili<br>↓ → Aplasia / IRC<br>→ MO si aplasia, EPO si IRC</div>
+            </div>
+            <div class="flow-branch" style="max-width:170px">
+              <div class="flow-label" style="color:#2980b9">MACROCÍTICA</div>
+              <div class="flow-node accion" style="font-size:0.74rem;text-align:left">B12 + Folato sérico<br>↓B12 → B12 IM/VO<br>↓Folato → Folato VO × 4m<br>Hipotiroidismo: T4/TSH</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node decision">¿Anemia grave (Hb &lt;7) o signos de descompensación hemodinámica?</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-split">
+        <div class="flow-branch">
+          <div class="flow-label">SÍ</div>
+          <div class="flow-node alerta">⚠️ Hospitalizar · Transfusión paquete globular 10–15 mL/kg lento · Referir a hematología</div>
+        </div>
+        <div class="flow-branch">
+          <div class="flow-label">NO</div>
+          <div class="flow-node fin">Tratamiento etiológico ambulatorio · Control de Hb a 4 semanas · Seguimiento mensual</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ANAMNESIS ANEMIA -->
+    <h3 style="color:var(--rojo); margin: 40px 0 16px; font-family:'Playfair Display',serif; font-size:1.3rem">
+      📋 Orientación de la Consulta / Anamnesis en Anemia
+    </h3>
+    <div class="anamnesis-list">
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Tipo de alimentación? (LME, fórmula, alimentación complementaria)</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Consumo de carne roja, leguminosas, vegetales verdes?</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Consumo excesivo de leche de vaca (&gt;500 mL/día)?</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Palidez? ¿Tiempo de evolución? ¿Progresiva?</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Ictericia, orina oscura, esplenomegalia? (hemólisis)</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Sangrado: epistaxis, rectorragia, menorragia?</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Hematuria, coluria? (hemólisis)</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Pica (comer tierra, hielo)? Sugestivo de ferropenia</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Antecedentes familiares de anemia, esplenectomía?</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Origen étnico? (talasemia en mediterráneos, drepanocitosis en afrodescendientes)</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Parasitosis? (uncinarias, Trichuris → pérdida de Fe)</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Fármacos? (anticonvulsivantes, MTX, cloranfenicol, sulfonamidas)</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Enfermedades crónicas? (AIJ, IRC, Crohn, LES)</div>
+      <div class="anamnesis-item" style="border-color:var(--rojo);background:#fdf5f5;color:var(--rojo)">¿Madre vegetariana o vegana? (riesgo def. B12 en lactante)</div>
+    </div>
+
+    <div class="nota" style="margin-top:24px">
+      <strong>📚 Referencias:</strong> Gómez-Gómez M, Danglot-Banck C, García de la Torre G: Introducción a la Pediatría, 9.ª ed. Méndez Editores · OPS/OMS: Manejo clínico del dengue 2009 · IMSS: Guías de práctica clínica · NOM-007-SSA2-2016 · Sociedad Mexicana de Pediatría 2023 · AAP Red Book 2024.
+    </div>
+  </div>
+</div>
+
+</main>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const btns = document.querySelectorAll('.nav-btn');
+  const map = { ira:0, eda:1, dengue:2, piel:3, parasitosis:4, anemias:5 };
+  btns[map[id]].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
